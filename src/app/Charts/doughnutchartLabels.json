@@ -1,0 +1,4 @@
+{
+    "doughnutChartLabels" : ["Download Sales", "In-Store Sales", "Mail-Order Sales"],
+    "doughnutChartData" : [350, 450, 100]
+}

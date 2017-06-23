@@ -9,13 +9,19 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
         this.name = 'World';
+        this.isActive = false;
     }
+    AppComponent.prototype.onClick = function ($event) {
+        $event.stopPropagation();
+        this.isActive = !this.isActive;
+        console.log("Clicked", $event);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1><br /><bar-chart-demo></bar-chart-demo>",
+        template: "<div class=\"container\">\n  <h1>Hello {{name}}</h1>\n  <br />\n  <input type=\"text\" autoGrow />\n  <br /><br />\n  <button \n    class=\"btn btn-primary\" \n    [class.active]=\"isActive\"\n    (click)=\"onClick($event)\"\n    ><span \n      [class.glyphicon-star]=\"isActive\"\n      [class.glyphicon-star-empty]=\"!isActive\"\n      class=\"glyphicon\"\n      ></span> Submit</button>\n  <br />\n  <div class=\"row\">\n    <div class=\"col-md-6\"><bar-chart-demo></bar-chart-demo></div>\n    <div class=\"col-md-6\"><doughnut-chart-demo></doughnut-chart-demo></div>\n  </div>\n  </div>"
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

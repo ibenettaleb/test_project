@@ -1,7 +1,7 @@
 <div>
-    <h3>Bar Chart</h3>
-  <div style="display: block">
-    <canvas baseChart
+  <h3>Bar Chart</h3>
+  <div style="display: block;">
+    <canvas baseChart 
             [datasets]="barChartData"
             [labels]="barChartLabels"
             [options]="barChartOptions"
@@ -10,5 +10,19 @@
             (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
   </div>
-  <button (click)="randomize()">Update</button>
+  <br /><br />
+  <table class="table">
+    <thead>
+        <th>Index</th>
+        <th>Label</th>
+        <th>Data</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let barData of barChartDataApi; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{barData.label}}</td>
+        <td *ngFor="let barDataMini of barData.data;">{{ barDataMini }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
